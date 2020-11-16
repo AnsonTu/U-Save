@@ -11,6 +11,10 @@
 - NPM (v6.4.1)
 - PostgreSQL (13.1)
 
+# NOTE
+
+- The instructions written below were written for setup and installation on a Windows machine.
+
 # Setting up PostgreSQL
 
 - Download the latest version of PostgreSQL from their website.
@@ -35,7 +39,7 @@
 # Creating and connect to a new local database
 
 - A new local database needs to be created with the appropriate settings to test the application locally.
-- To connect Postgres to the created `dev` user, enter `psql -d postgres -U dev`.
+- To connect to Postgres using the created `dev` user, enter `psql -d postgres -U dev`.
 - To create a new database, enter `CREATE DATABASE usave;`.
 - To check if the `usave` database was successfully created, enter `\list`.
 - To connect to the `usave` database, enter `\c usave`.
@@ -52,24 +56,9 @@ CREATE TABLE {table_name} (
 )
 ```
 
-- For the U-Save application, four tables need to be created: `product`, `order`, `customer`, and `supplier`.
+- For the U-Save application, four tables need to be created: `customer`, `supplier`, `product`, and `order_details`.
 
 ```
-CREATE TABLE product (
-  product_id SERIAL PRIMARY KEY,
-  name VARCHAR(255),
-  quantity INTEGER,
-  price FLOAT(10),
-  supplier_id INTEGER NOT NULL
-);
-CREATE TABLE order_details (
-  order_id SERIAL PRIMARY KEY,
-  order_date DATE,
-  shipping_date DATE,
-  customer_id INTEGER NOT NULL,
-  product_id INTEGER NOT NULL,
-  product_quantity INTEGER
-);
 CREATE TABLE customer (
   customer_id SERIAL PRIMARY KEY,
   name VARCHAR(255),
@@ -82,6 +71,21 @@ CREATE TABLE supplier (
   name VARCHAR(255),
   address VARCHAR(255),
   phone VARCHAR(255)
+);
+CREATE TABLE product (
+  product_id SERIAL PRIMARY KEY,
+  name VARCHAR(255),
+  quantity INTEGER,
+  price FLOAT(10),
+  supplier_id INTEGER REFERENCES supplier(supplier_id)
+);
+CREATE TABLE order_details (
+  order_id SERIAL PRIMARY KEY,
+  order_date DATE,
+  shipping_date DATE,
+  product_quantity INTEGER,
+  customer_id INTEGER REFERENCES customer(customer_id),
+  product_id INTEGER REFERENCES product(product_id)
 );
 ```
 
