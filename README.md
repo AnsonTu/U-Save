@@ -1,9 +1,9 @@
 # U-Save
 
-Final project for SOFE 3700U - Data Management Systems
-An online grocery store for post-secondary students
-Created using React, Node.js, Express, and PostgreSQL
-Contributers: Anson Tu (100655482), Kaushik Ramani (100651855)
+- Final project for SOFE 3700U - Data Management Systems
+- An online grocery store for post-secondary students
+- Created using React, Node.js, Express, and PostgreSQL
+- Contributers: Anson Tu (100655482), Kaushik Ramani (100651855)
 
 # Prequisites
 
