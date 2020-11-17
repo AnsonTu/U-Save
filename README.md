@@ -9,6 +9,7 @@
 
 - Node.js (v10.15.0)
 - NPM (v6.4.1)
+- Yarn Package Manager (v.1.16.0)
 - PostgreSQL (13.1)
 
 # NOTE
@@ -109,11 +110,12 @@ INSERT INTO supplier(name, address, phone)
 
 - Clone the repo using `git clone https://github.com/AnsonTu/U-Save.git`
 - There are two directories in this project, one for the client, and one for the server
-- `cd` into the client directory, and run `npm install`. Repeat with the server directory.
+- To install the depedencies for the frontend portion, `cd` into the client directory, and run `yarn install`.
+- To install the depedencies for the backend portion, `cd` into the server directory, and run `npm install`.
 
 # Running the project
 
-- To run the client, `cd` into the client directory, and enter `npm run start`.
+- To run the client, `cd` into the client directory, and enter `yarn start`.
 - To run the server, `cd` into the server directory, and enter `npm run dev`.
 - The client, server, and database must all be online and running for the U-Save application to be fully functional.
 - To check the status of the client, go to `localhost:3000` on the browser.
