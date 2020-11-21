@@ -3,14 +3,17 @@ import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import PhoneIcon from '@material-ui/icons/Phone';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import PersonPinIcon from '@material-ui/icons/PersonPin';
-
+import HomeIcon from '@material-ui/icons/Home';
+import StorefrontIcon from '@material-ui/icons/Storefront';
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import PeopleIcon from '@material-ui/icons/People';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
+import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
-    maxWidth: 500,
+    
+
   },
 });
 
@@ -30,11 +33,13 @@ function Navbar() {
         variant="fullWidth"
         indicatorColor="secondary"
         textColor="secondary"
-        aria-label="icon label tabs example"
       >
-        <Tab icon={<PhoneIcon />} label="RECENTS" />
-        <Tab icon={<FavoriteIcon />} label="FAVORITES" />
-        <Tab icon={<PersonPinIcon />} label="NEARBY" />
+        <Tab icon={<HomeIcon />} label="HOME" />
+        <Tab icon={<StorefrontIcon />} label="PRODUCTS" />
+        <Tab icon={<ShoppingBasketIcon />} label="CART" />
+        <Tab icon={<PeopleIcon />} label="CUSTOMERS" />
+        <Tab icon={<MenuBookIcon />} label="ORDERS" />
+        <Tab icon={<LocalShippingIcon />} label="SUPPLIERS" />
       </Tabs>
     </Paper>
   );
