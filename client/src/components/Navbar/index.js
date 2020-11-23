@@ -9,7 +9,7 @@ import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import PeopleIcon from "@material-ui/icons/People";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import LocalShippingIcon from "@material-ui/icons/LocalShipping";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -19,7 +19,8 @@ const useStyles = makeStyles({
 
 function Navbar() {
   const classes = useStyles();
-  const [value, setValue] = useState(0);
+  const location = useLocation();
+  const [value, setValue] = useState(location.pathname);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -34,35 +35,46 @@ function Navbar() {
         indicatorColor="secondary"
         textColor="secondary"
       >
-        <Tab icon={<HomeIcon />} component={Link} to={"/"} label="HOME" />
+        <Tab
+          icon={<HomeIcon />}
+          component={Link}
+          to={"/"}
+          value="/"
+          label="HOME"
+        />
         <Tab
           icon={<ShoppingCartIcon />}
           component={Link}
           to={"/products"}
+          value="/products"
           label="PRODUCTS"
         />
         <Tab
           icon={<ShoppingBasketIcon />}
           component={Link}
           to={"/cart"}
+          value="/cart"
           label="CART"
         />
         <Tab
           icon={<PeopleIcon />}
           component={Link}
           to={"/customers"}
+          value="/customers"
           label="CUSTOMERS"
         />
         <Tab
           icon={<MenuBookIcon />}
           component={Link}
           to={"/orders"}
+          value="/orders"
           label="ORDERS"
         />
         <Tab
           icon={<LocalShippingIcon />}
           component={Link}
           to={"/suppliers"}
+          value="/suppliers"
           label="SUPPLIERS"
         />
       </Tabs>
