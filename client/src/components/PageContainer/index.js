@@ -9,15 +9,15 @@ const useStyle = makeStyles((theme) => ({
     maxWidth: "100vw",
     margin: "0",
     paddingLeft: theme.spacing(3),
-    paddingRight: theme.spacing(3)
-  }
+    paddingRight: theme.spacing(3),
+  },
 }));
 
 const PageContainer = (props) => {
   const classes = useStyle();
 
   return (
-    <Grid container className={classes.rootContainer}>
+    <Grid container item direction="column" className={classes.rootContainer}>
       {props.children}
     </Grid>
   );

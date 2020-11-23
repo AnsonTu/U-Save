@@ -4,15 +4,16 @@ import { makeStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import HomeIcon from "@material-ui/icons/Home";
-import StorefrontIcon from "@material-ui/icons/Storefront";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import PeopleIcon from "@material-ui/icons/People";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import LocalShippingIcon from "@material-ui/icons/LocalShipping";
+import StoreIcon from "@material-ui/icons/Store";
 const useStyles = makeStyles({
   root: {
-    flexGrow: 1
-  }
+    flexGrow: 1,
+  },
 });
 
 function Navbar() {
@@ -33,7 +34,8 @@ function Navbar() {
         textColor="secondary"
       >
         <Tab icon={<HomeIcon />} label="HOME" />
-        <Tab icon={<StorefrontIcon />} label="PRODUCTS" />
+        <Tab icon={<ShoppingCartIcon />} label="PRODUCTS" />
+        <Tab icon={<StoreIcon />} label="SHOP" />
         <Tab icon={<ShoppingBasketIcon />} label="CART" />
         <Tab icon={<PeopleIcon />} label="CUSTOMERS" />
         <Tab icon={<MenuBookIcon />} label="ORDERS" />
