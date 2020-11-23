@@ -9,7 +9,7 @@ import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import PeopleIcon from "@material-ui/icons/People";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import LocalShippingIcon from "@material-ui/icons/LocalShipping";
-import StoreIcon from "@material-ui/icons/Store";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -34,13 +34,37 @@ function Navbar() {
         indicatorColor="secondary"
         textColor="secondary"
       >
-        <Tab icon={<HomeIcon />} label="HOME" />
-        <Tab icon={<ShoppingCartIcon />} label="PRODUCTS" />
-        <Tab icon={<StoreIcon />} label="SHOP" />
-        <Tab icon={<ShoppingBasketIcon />} label="CART" />
-        <Tab icon={<PeopleIcon />} label="CUSTOMERS" />
-        <Tab icon={<MenuBookIcon />} label="ORDERS" />
-        <Tab icon={<LocalShippingIcon />} label="SUPPLIERS" />
+        <Tab icon={<HomeIcon />} component={Link} to={"/"} label="HOME" />
+        <Tab
+          icon={<ShoppingCartIcon />}
+          component={Link}
+          to={"/products"}
+          label="PRODUCTS"
+        />
+        <Tab
+          icon={<ShoppingBasketIcon />}
+          component={Link}
+          to={"/cart"}
+          label="CART"
+        />
+        <Tab
+          icon={<PeopleIcon />}
+          component={Link}
+          to={"/customers"}
+          label="CUSTOMERS"
+        />
+        <Tab
+          icon={<MenuBookIcon />}
+          component={Link}
+          to={"/orders"}
+          label="ORDERS"
+        />
+        <Tab
+          icon={<LocalShippingIcon />}
+          component={Link}
+          to={"/suppliers"}
+          label="SUPPLIERS"
+        />
       </Tabs>
     </Paper>
   );
