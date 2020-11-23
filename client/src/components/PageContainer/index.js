@@ -9,8 +9,8 @@ const useStyle = makeStyles((theme) => ({
     maxWidth: "100vw",
     margin: "0",
     paddingLeft: theme.spacing(3),
-    paddingRight: theme.spacing(3),
-  },
+    paddingRight: theme.spacing(3)
+  }
 }));
 
 const PageContainer = (props) => {

@@ -1,5 +1,5 @@
 import React from "react";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -169,13 +169,13 @@ const rows = [
     3.9,
     "1234 Queen St, Downtown Toronto, Ontario, L1A3FB",
     "1234 Queen St, Downtown Toronto, Ontario, L1A3FB"
-  ),
+  )
 ];
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 700,
-  },
+    minWidth: 700
+  }
 });
 
 export default function AppTable() {

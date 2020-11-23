@@ -10,10 +10,11 @@ import PeopleIcon from "@material-ui/icons/People";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 import StoreIcon from "@material-ui/icons/Store";
+
 const useStyles = makeStyles({
   root: {
-    flexGrow: 1,
-  },
+    flexGrow: 1
+  }
 });
 
 function Navbar() {
