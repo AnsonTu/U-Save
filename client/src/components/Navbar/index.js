@@ -5,10 +5,10 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import HomeIcon from "@material-ui/icons/Home";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import PeopleIcon from "@material-ui/icons/People";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import LocalShippingIcon from "@material-ui/icons/LocalShipping";
+import LocationCityIcon from "@material-ui/icons/LocationCity";
 import { Link, useLocation } from "react-router-dom";
 
 const useStyles = makeStyles({
@@ -50,13 +50,6 @@ function Navbar() {
           label="PRODUCTS"
         />
         <Tab
-          icon={<ShoppingBasketIcon />}
-          component={Link}
-          to={"/cart"}
-          value="/cart"
-          label="CART"
-        />
-        <Tab
           icon={<PeopleIcon />}
           component={Link}
           to={"/customers"}
@@ -76,6 +69,13 @@ function Navbar() {
           to={"/suppliers"}
           value="/suppliers"
           label="SUPPLIERS"
+        />
+        <Tab
+          icon={<LocationCityIcon />}
+          component={Link}
+          to={"/locations"}
+          value="/locations"
+          label="LOCATIONS"
         />
       </Tabs>
     </Paper>

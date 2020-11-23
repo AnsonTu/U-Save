@@ -1,11 +1,11 @@
 import React from "react";
 import PageContainer from "../../components/PageContainer";
 
-function Cart() {
+function Locations() {
   return (
     <PageContainer>
-      <h2>Cart</h2>
+      <h2>Locations</h2>
     </PageContainer>
   );
 }
-export default Cart;
+export default Locations;
