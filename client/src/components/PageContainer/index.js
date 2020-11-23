@@ -17,7 +17,7 @@ const PageContainer = (props) => {
   const classes = useStyle();
 
   return (
-    <Grid container className={classes.rootContainer}>
+    <Grid container item direction="column" className={classes.rootContainer}>
       {props.children}
     </Grid>
   );
