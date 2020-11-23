@@ -2,24 +2,24 @@ import React, { useState, useEffect } from "react";
 import PageContainer from "../../components/PageContainer";
 import AppTable from "../../components/AppTable";
 
-function Customers() {
-  const [customers, setCustomers] = useState([]);
+function Locations() {
+  const [locations, setLocations] = useState([]);
 
-  // Get all customers when the page is rendered
+  // Get all locations when the page is rendered
   useEffect(() => {
-    fetch("http://localhost:3090/customers")
+    fetch("http://localhost:3090/customers/geographic-info")
       .then((response) => response.json())
       .then((data) => {
-        setCustomers(data);
+        setLocations(data);
       })
       .catch((err) => console.error(err));
   }, []);
 
   return (
     <PageContainer>
-      <h2>Customers</h2>
-      <AppTable tableData={customers} />
+      <h2>Locations</h2>
+      <AppTable tableData={locations} />
     </PageContainer>
   );
 }
-export default Customers;
+export default Locations;

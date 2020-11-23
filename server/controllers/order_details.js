@@ -2,13 +2,16 @@ const pool = require("./pool");
 
 // Get all orders in the database
 exports.getOrders = (req, res) => {
-  pool.query(`SELECT * FROM order_details;`, (err, results) => {
-    if (err) {
-      throw err;
-    }
+  pool.query(
+    `SELECT * FROM order_details ORDER BY order_id;`,
+    (err, results) => {
+      if (err) {
+        throw err;
+      }
 
-    res.status(200).json(results.rows);
-  });
+      res.status(200).json(results.rows);
+    }
+  );
 };
 
 // Get an order's info based on the given id

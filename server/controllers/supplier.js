@@ -2,7 +2,7 @@ const pool = require("./pool");
 
 // Get all suppliers in the database
 exports.getSuppliers = (req, res) => {
-  pool.query(`SELECT * FROM supplier`, (err, results) => {
+  pool.query(`SELECT * FROM supplier ORDER BY supplier_id`, (err, results) => {
     if (err) {
       throw err;
     }

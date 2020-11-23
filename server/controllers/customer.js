@@ -2,7 +2,7 @@ const pool = require("./pool");
 
 // Get all customers in the database
 exports.getCustomers = (req, res) => {
-  pool.query(`SELECT * FROM customer;`, (err, results) => {
+  pool.query(`SELECT * FROM customer ORDER BY customer_id;`, (err, results) => {
     if (err) {
       throw err;
     }
