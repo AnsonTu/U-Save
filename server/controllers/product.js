@@ -2,7 +2,7 @@ const pool = require("./pool");
 
 // Get all products in the database
 exports.getProducts = (req, res) => {
-  pool.query(`SELECT * FROM product;`, (err, results) => {
+  pool.query(`SELECT * FROM product ORDER BY product_id;`, (err, results) => {
     if (err) {
       throw err;
     }
