@@ -5,7 +5,7 @@
 - Created using React, Node.js, Express, and PostgreSQL
 - Contributers: Anson Tu (100655482), Kaushik Ramani (100651855)
 
-# Prequisites
+# Prerequisites
 
 - Node.js (v10.15.0)
 - NPM (v6.4.1)
