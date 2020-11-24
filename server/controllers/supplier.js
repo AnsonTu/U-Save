@@ -47,6 +47,23 @@ exports.getMultiProductSuppliers = (req, res) => {
   );
 };
 
+// View 6: Get the names of all products that belong to a specific supplier
+exports.getSupplierProducts = (req, res) => {
+  const supplier_id = parseInt(req.params.id);
+
+  pool.query(
+    `SELECT DISTINCT product.name FROM product
+    JOIN supplier ON product.supplier_id=${supplier_id}`,
+    (err, results) => {
+      if (err) {
+        throw err;
+      }
+
+      res.status(200).json(results.rows);
+    }
+  );
+};
+
 // Add a new supplier
 exports.addSupplier = (req, res) => {
   const { name, phone, address } = req.body;

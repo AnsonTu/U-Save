@@ -46,21 +46,6 @@ exports.getFullOrderInfo = (req, res) => {
   );
 };
 
-// View 4: Get all products that belong to an existing order
-exports.getProductsInOrder = (req, res) => {
-  pool.query(
-    `SELECT product.product_id, order_details.product_id, order.order_id FROM Contains
-      FULL OUTER JOIN product ON product.product_id=order_details.product_id;`,
-    (err, results) => {
-      if (err) {
-        throw err;
-      }
-
-      res.status(200).json(results.rows);
-    }
-  );
-};
-
 // View 7: Get the order ID, order dates, and shipping dates for all of a customer's orders
 exports.getCustomerOrderDates = (req, res) => {
   const customer_id = parseInt(req.params.id);
