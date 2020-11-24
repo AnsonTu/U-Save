@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import PageContainer from "../../components/PageContainer";
 import AppTable from "../../components/AppTable";
-import { getResources } from "../../helpers";
+import { getResources, createResource } from "../../helpers";
 
 const useStyles = makeStyles({
+  textField: {
+    maxWidth: 175,
+    marginRight: "20px",
+    marginBottom: "20px"
+  },
   button: {
     margin: "0 20px"
   },
@@ -18,6 +24,7 @@ const useStyles = makeStyles({
 
 function Products() {
   const classes = useStyles();
+  const [formInput, setFormInput] = useState({});
   const [products, setProducts] = useState([]);
 
   // Get all products when the page is rendered
@@ -40,10 +47,60 @@ function Products() {
     getResources(`/products/products-in-orders`, setProducts);
   };
 
+  // Save the form input
+  const handleFormChange = (event) => {
+    setFormInput({
+      ...formInput,
+      [event.target.name]: event.target.value
+    });
+  };
+  // Create a new product and update the table
+  const createProduct = (event) => {
+    event.preventDefault();
+    createResource(`/products/add-product`, formInput);
+    getProducts();
+  };
+
   return (
     <PageContainer>
       <h2>Products</h2>
       <AppTable tableData={products} />
+      <Divider className={classes.divider} />
+      <Grid item container alignItems="center" justify="center">
+        <form onSubmit={createProduct}>
+          <TextField
+            className={classes.textField}
+            label="Name"
+            name="name"
+            required
+            onChange={handleFormChange}
+          />
+          <TextField
+            className={classes.textField}
+            label="Quantity"
+            name="quantity"
+            required
+            onChange={handleFormChange}
+          />
+          <TextField
+            className={classes.textField}
+            label="Price"
+            name="price"
+            required
+            onChange={handleFormChange}
+          />
+          <TextField
+            className={classes.textField}
+            label="Supplier ID"
+            name="supplier_id"
+            required
+            onChange={handleFormChange}
+          />
+          <Button variant="contained" size="medium" type="submit">
+            Create new product
+          </Button>
+        </form>
+      </Grid>
       <Divider className={classes.divider} />
       <Grid item container alignItems="center" justify="center">
         <Button

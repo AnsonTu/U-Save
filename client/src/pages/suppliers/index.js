@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import PageContainer from "../../components/PageContainer";
 import AppTable from "../../components/AppTable";
-import { getResources } from "../../helpers";
+import { getResources, createResource } from "../../helpers";
 
 const useStyles = makeStyles({
   textField: {
@@ -24,6 +24,7 @@ const useStyles = makeStyles({
 
 function Suppliers() {
   const classes = useStyles();
+  const [formInput, setFormInput] = useState({});
   const [suppliers, setSuppliers] = useState([]);
   const [supplierId, setSupplierId] = useState("");
 
@@ -53,10 +54,53 @@ function Suppliers() {
     }
   };
 
+  // Save the form input
+  const handleFormChange = (event) => {
+    setFormInput({
+      ...formInput,
+      [event.target.name]: event.target.value
+    });
+  };
+  // Create a new supplier and update the table
+  const createSupplier = (event) => {
+    event.preventDefault();
+    createResource(`/suppliers/add-supplier`, formInput);
+    getSuppliers();
+  };
+
   return (
     <PageContainer>
       <h2>Suppliers</h2>
       <AppTable tableData={suppliers} />
+      <Divider className={classes.divider} />
+      <Grid item container alignItems="center" justify="center">
+        <form onSubmit={createSupplier}>
+          <TextField
+            className={classes.textField}
+            label="Name"
+            name="name"
+            required
+            onChange={handleFormChange}
+          />
+          <TextField
+            className={classes.textField}
+            label="Address"
+            name="address"
+            required
+            onChange={handleFormChange}
+          />
+          <TextField
+            className={classes.textField}
+            label="Phone"
+            name="phone"
+            required
+            onChange={handleFormChange}
+          />
+          <Button variant="contained" size="medium" type="submit">
+            Create new supplier
+          </Button>
+        </form>
+      </Grid>
       <Divider className={classes.divider} />
       <Grid item container alignItems="center" justify="center">
         <Button
@@ -83,7 +127,7 @@ function Suppliers() {
           label="Supplier ID"
           onChange={getSupplierId}
         />
-        <Button variant="contained" size="small" onClick={getSupplierProducts}>
+        <Button variant="contained" size="medium" onClick={getSupplierProducts}>
           Get Products from supplier (View 6)
         </Button>
       </Grid>
