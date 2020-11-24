@@ -10,7 +10,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles({
-  tableContainer: { maxHeight: 650, maxWidth: 1200 },
+  tableContainer: { maxHeight: 650, maxWidth: 1200, marginBottom: "10px" },
   table: {
     minWidth: 700
   },
