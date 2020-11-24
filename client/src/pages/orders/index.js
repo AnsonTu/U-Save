@@ -6,9 +6,13 @@ import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import PageContainer from "../../components/PageContainer";
 import AppTable from "../../components/AppTable";
-import { getResources } from "../../helpers";
+import { getResources, createResource } from "../../helpers";
 
 const useStyles = makeStyles({
+  dateField: {
+    maxWidth: 175,
+    margin: "16px 20px 20px 0"
+  },
   textField: {
     maxWidth: 175,
     marginRight: "20px",
@@ -24,6 +28,7 @@ const useStyles = makeStyles({
 
 function Orders() {
   const classes = useStyles();
+  const [formInput, setFormInput] = useState({});
   const [orders, setOrders] = useState([]);
   const [customerId, setCustomerId] = useState("");
 
@@ -59,10 +64,67 @@ function Orders() {
     }
   };
 
+  // Save the form input
+  const handleFormChange = (event) => {
+    setFormInput({
+      ...formInput,
+      [event.target.name]: event.target.value
+    });
+  };
+  // Create a new product and update the table
+  const createProduct = (event) => {
+    event.preventDefault();
+    createResource(`/orders/add-order`, formInput);
+    getOrders();
+  };
+
   return (
     <PageContainer>
       <h2>Orders</h2>
       <AppTable tableData={orders} />
+      <Divider className={classes.divider} />
+      <Grid item container alignItems="center" justify="center">
+        <form onSubmit={createProduct}>
+          <TextField
+            className={classes.dateField}
+            name="order_date"
+            type="date"
+            required
+            onChange={handleFormChange}
+          />
+          <TextField
+            className={classes.dateField}
+            name="shipping_date"
+            type="date"
+            required
+            onChange={handleFormChange}
+          />
+          <TextField
+            className={classes.textField}
+            label="Product Quantity"
+            name="product_quantity"
+            required
+            onChange={handleFormChange}
+          />
+          <TextField
+            className={classes.textField}
+            label="Customer ID"
+            name="customer_id"
+            required
+            onChange={handleFormChange}
+          />
+          <TextField
+            className={classes.textField}
+            label="Product ID"
+            name="product_id"
+            required
+            onChange={handleFormChange}
+          />
+          <Button variant="contained" size="medium" type="submit">
+            Create new order
+          </Button>
+        </form>
+      </Grid>
       <Divider className={classes.divider} />
       <Grid item container alignItems="center" justify="center">
         <Button

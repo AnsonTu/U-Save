@@ -10,7 +10,12 @@ export const getResources = (url, setData) => {
     .catch((err) => console.error(err));
 };
 
-// Make POST requests using passed url and save data
-export const createResource = (url) => {
-  // TODO: Create helper func for POST requests
+// Make POST requests using passed url and data
+export const createResource = async (url, body) => {
+  await fetch(`http://localhost:3090${url}`, {
+    method: "POST",
+    body: JSON.stringify(body)
+  }).then((response) => {
+    return response.json();
+  });
 };
