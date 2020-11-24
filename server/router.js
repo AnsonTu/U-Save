@@ -18,7 +18,6 @@ module.exports = (app) => {
   // Routes for the order_details table
   app.get("/orders", order.getOrders);
   app.get("/orders/full-order-info", order.getFullOrderInfo);
-  app.get("/orders/products-in-orders", order.getProductsInOrder);
   app.get("/orders/customer-order-dates/:id", order.getCustomerOrderDates);
   app.get("/orders/products-from-orders/:id", order.getProductsFromOrders);
   app.get("/orders/:id", order.getOrder);
@@ -26,7 +25,7 @@ module.exports = (app) => {
   // Routes for the product table
   app.get("/products", product.getProducts);
   app.get("/products/below-average-prices", product.getBelowAveragePrices);
-  app.get("/products/supplier-products/:id", product.getSupplierProducts);
+  app.get("/products/products-in-orders", product.getProductsInOrder);
   app.get("/products/:id", product.getProduct);
   app.post("/products/add-product", product.addProduct);
   // Routes for the supplier table
@@ -35,6 +34,7 @@ module.exports = (app) => {
     "/suppliers/multi-product-suppliers",
     supplier.getMultiProductSuppliers
   );
+  app.get("/suppliers/supplier-products/:id", supplier.getSupplierProducts);
   app.get("/suppliers/:id", supplier.getSupplier);
   app.post("/suppliers/add-supplier", supplier.addSupplier);
 };

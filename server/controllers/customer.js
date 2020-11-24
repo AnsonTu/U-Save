@@ -46,7 +46,7 @@ exports.getGeographicInfo = (req, res) => {
 // View 8: Get the name, phone number, and email of all customers who have an active order
 exports.getActiveCustomersInfo = (req, res) => {
   pool.query(
-    `SELECT name, phone, email FROM customer
+    `SELECT DISTINCT name, phone, email FROM customer
     JOIN order_details ON customer.customer_id=order_details.customer_id;`,
     (err, results) => {
       if (err) {

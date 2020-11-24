@@ -42,13 +42,12 @@ exports.getBelowAveragePrices = (req, res) => {
   );
 };
 
-// View 6: Get the names of all products that belong to a specific supplier
-exports.getSupplierProducts = (req, res) => {
-  const supplier_id = parseInt(req.params.id);
-
+// View 4: Get all products, and see which ones belong to an existing order
+exports.getProductsInOrder = (req, res) => {
   pool.query(
-    `SELECT DISTINCT product.name FROM product
-    JOIN supplier ON product.supplier_id=${supplier_id}`,
+    `SELECT product.name, order_details.order_id FROM order_details 
+    FULL OUTER JOIN product ON product.product_id=order_details.product_id
+    ORDER BY product.name;`,
     (err, results) => {
       if (err) {
         throw err;
