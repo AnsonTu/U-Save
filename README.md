@@ -37,13 +37,22 @@
 - To check if the new user was successfully created, enter `\du`.
 - Enter `\q` to quit the current session.
 
-# Creating and connect to a new local database
+# Creating and connect to a new local database (IMPORT METHOD)
+
+- There are two methods to creating the local databse: by importing the attached `sample_data.pgsql` file, or by creating it manually.
+- If importing the attached file works, please skip to `# Project Installation`.
+- If importing the attached file fails, please follow the steps below, starting from `# Creating and connect to a new local database (MANUAL)`.
+- To import the database from the attached `sample_data.pgsql` file, enter `psql -U dev usave < sample_data.pgsql`, and enter `password1` (dev user password).
+- To check if the `usave` database was successfully created, enter `\list`.
+- To connect to the `usave` database, enter `psql -d usave -U dev`, and enter `password1` as the password.
+
+# Creating and connect to a new local database (MANUAL METHOD)
 
 - A new local database needs to be created with the appropriate settings to test the application locally.
 - To connect to Postgres using the created `dev` user, enter `psql -d postgres -U dev`.
 - To create a new database, enter `CREATE DATABASE usave;`.
 - To check if the `usave` database was successfully created, enter `\list`.
-- To connect to the `usave` database, enter `\c usave`.
+- To connect to the `usave` database, enter `\c usave`, or quit the current session by entering `\q`, and then enter `psql -d usave -U dev`.
 
 # Creating tables for the database
 
