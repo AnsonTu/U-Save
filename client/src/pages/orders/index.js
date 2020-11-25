@@ -31,6 +31,7 @@ function Orders() {
   const [formInput, setFormInput] = useState({});
   const [orders, setOrders] = useState([]);
   const [customerId, setCustomerId] = useState("");
+  const [orderId, setOrderId] = useState("");
 
   // Get all orders when the page is rendered
   useEffect(() => {
@@ -40,6 +41,15 @@ function Orders() {
   // Get all orders in the database
   const getOrders = () => {
     getResources(`/orders`, setOrders);
+  };
+
+  // Save the orderId
+  const getOrderId = (event) => {
+    setOrderId(event.target.value);
+  };
+  // Get order based on passed orderId
+  const getOrder = () => {
+    getResources(`/orders/${orderId}`, setOrders);
   };
 
   // Get the customer name, product name, and product quantity for all orders
@@ -148,6 +158,22 @@ function Orders() {
       <Grid item container alignItems="center" justify="center">
         <TextField
           className={classes.textField}
+          label="Order ID"
+          onChange={getOrderId}
+        />
+        <Button
+          className={classes.button}
+          variant="contained"
+          size="medium"
+          onClick={getOrder}
+        >
+          Search Order
+        </Button>
+      </Grid>
+      <Divider className={classes.divider} />
+      <Grid item container alignItems="center" justify="center">
+        <TextField
+          className={classes.textField}
           label="Customer ID"
           onChange={getCustomerId}
         />
@@ -160,7 +186,7 @@ function Orders() {
           Get Order Dates (View 7)
         </Button>
         <Button variant="contained" size="medium" onClick={getCustomerProducts}>
-          Search Customer (View 10)
+          Search Customer Products (View 10)
         </Button>
       </Grid>
       <Divider className={classes.divider} />

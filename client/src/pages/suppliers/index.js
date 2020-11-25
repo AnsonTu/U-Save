@@ -38,6 +38,11 @@ function Suppliers() {
     getResources(`/suppliers`, setSuppliers);
   };
 
+  // Get supplier based on passed supplierId
+  const getSupplier = () => {
+    getResources(`/suppliers/${supplierId}`, setSuppliers);
+  };
+
   // Get all suppliers who contributed more than one product
   const getMultiProductSuppliers = () => {
     getResources(`/suppliers/multi-product-suppliers`, setSuppliers);
@@ -127,7 +132,20 @@ function Suppliers() {
           label="Supplier ID"
           onChange={getSupplierId}
         />
-        <Button variant="contained" size="medium" onClick={getSupplierProducts}>
+        <Button
+          className={classes.button}
+          variant="contained"
+          size="medium"
+          onClick={getSupplier}
+        >
+          Search Supplier
+        </Button>
+        <Button
+          className={classes.button}
+          variant="contained"
+          size="medium"
+          onClick={getSupplierProducts}
+        >
           Get Products from supplier (View 6)
         </Button>
       </Grid>
