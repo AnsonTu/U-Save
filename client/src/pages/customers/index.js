@@ -26,6 +26,7 @@ function Customers() {
   const classes = useStyles();
   const [formInput, setFormInput] = useState({});
   const [customers, setCustomers] = useState([]);
+  const [customerId, setCustomerId] = useState("");
 
   // Get all customers when the page is rendered
   useEffect(() => {
@@ -35,6 +36,15 @@ function Customers() {
   // Get all customers
   const getCustomers = () => {
     getResources(`/customers`, setCustomers);
+  };
+
+  // Save the customerId
+  const getCustomerId = (event) => {
+    setCustomerId(event.target.value);
+  };
+  // Get customer based on passed customerId
+  const getCustomer = () => {
+    getResources(`/customers/${customerId}`, setCustomers);
   };
 
   // Get all customers who have an active order
@@ -126,6 +136,22 @@ function Customers() {
           onClick={getOctoberCustomers}
         >
           Get October Customers (View 9)
+        </Button>
+      </Grid>
+      <Divider className={classes.divider} />
+      <Grid item container alignItems="center" justify="center">
+        <TextField
+          className={classes.textField}
+          label="Customer ID"
+          onChange={getCustomerId}
+        />
+        <Button
+          className={classes.button}
+          variant="contained"
+          size="medium"
+          onClick={getCustomer}
+        >
+          Search Customer
         </Button>
       </Grid>
       <Divider className={classes.divider} />

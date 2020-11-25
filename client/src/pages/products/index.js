@@ -26,6 +26,7 @@ function Products() {
   const classes = useStyles();
   const [formInput, setFormInput] = useState({});
   const [products, setProducts] = useState([]);
+  const [productId, setProductId] = useState("");
 
   // Get all products when the page is rendered
   useEffect(() => {
@@ -35,6 +36,15 @@ function Products() {
   // Get all products
   const getProducts = () => {
     getResources(`/products`, setProducts);
+  };
+
+  // Save the productId
+  const getProductId = (event) => {
+    setProductId(event.target.value);
+  };
+  // Get product based on passed productId
+  const getProduct = () => {
+    getResources(`/products/${productId}`, setProducts);
   };
 
   // Get all products that are cheaper than the average price of all products
@@ -126,6 +136,22 @@ function Products() {
           onClick={getProductsInOrder}
         >
           Get Products in Existing Orders (View 4)
+        </Button>
+      </Grid>
+      <Divider className={classes.divider} />
+      <Grid item container alignItems="center" justify="center">
+        <TextField
+          className={classes.textField}
+          label="Product ID"
+          onChange={getProductId}
+        />
+        <Button
+          className={classes.button}
+          variant="contained"
+          size="medium"
+          onClick={getProduct}
+        >
+          Search Product
         </Button>
       </Grid>
       <Divider className={classes.divider} />
