@@ -16,6 +16,10 @@
 
 - The instructions written below were written for setup and installation on a Windows machine.
 
+# Checking out the repo
+
+- Clone the repo using `git clone https://github.com/AnsonTu/U-Save.git`
+
 # Setting up PostgreSQL
 
 - Download the latest version of PostgreSQL from their website.
@@ -118,7 +122,6 @@ INSERT INTO supplier(name, address, phone)
 
 # Project Installation
 
-- Clone the repo using `git clone https://github.com/AnsonTu/U-Save.git`
 - There are two directories in this project, one for the client, and one for the server
 - To install the depedencies for the frontend portion, `cd` into the client directory, and run `yarn install`.
 - To install the depedencies for the backend portion, `cd` into the server directory, and run `npm install`.
